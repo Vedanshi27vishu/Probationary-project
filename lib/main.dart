@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provision/card.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,16 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> items = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew',
-    'Apple',
-    'Apple2',
+   
   ];
   List<String> filteredItems = [];
 
@@ -71,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Logo',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              
             ),
           ],
         ),
@@ -81,45 +72,51 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                child: Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 186, 186, 186),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 15, bottom: 10),
-                            hintText: 'Search name here...',
-                            hintStyle: TextStyle(
-                                color: Color.fromARGB(255, 121, 121, 121)),
-                            border: InputBorder.none,
-                          ),
-                          onChanged: (value) => _filterItems(value),
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Container(
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color.fromARGB(255, 186, 186, 186),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        cursorColor: Color.fromARGB(255, 57, 57, 57),
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: 15, bottom: 10),
+                          hintText: 'Search name here...',
+                          hintStyle:
+                              TextStyle(color: Color.fromARGB(255, 121, 121, 121)),
+                          border: InputBorder.none,
                         ),
+                        onChanged: (value) => _filterItems(value),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Color.fromARGB(255, 121, 121, 121),
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Color.fromARGB(255, 121, 121, 121),
                       ),
-                    ],
-                  ),
-                )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
-                itemCount: filteredItems.length,
+                itemCount:10,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(filteredItems[index]),
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      width: double.infinity,
+                      child: MyCard(), // Use the custom MyCard widget
+                    ),
                   );
                 },
               ),
