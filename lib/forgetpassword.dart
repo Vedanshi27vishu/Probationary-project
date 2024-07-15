@@ -7,7 +7,8 @@ class Forgetpassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenWidget(title: "Forgot Password", buttontext: "Reset Password", subtitle: "Enter your contact number to reset", subtitle2: "your password");
+    return ScreenWidget(title: "Forgot Password", 
+    buttontext: "Reset Password", subtitle: "Enter your contact number to reset", subtitle2: "your password", label1: "Phone Number",);
   }
 }
 

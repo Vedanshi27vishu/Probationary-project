@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 class ScreenWidget extends StatelessWidget {
   final String title;
   final String subtitle;
-  final String? subtitle2; 
+  final String? subtitle2;
   final String buttontext;
+  final String label1;
 
   ScreenWidget({
     Key? key,
     required this.title,
     required this.buttontext,
     required this.subtitle,
-    this.subtitle2, 
+    required this.label1,
+    this.subtitle2,
   }) : super(key: key);
 
   @override
@@ -72,9 +74,15 @@ class ScreenWidget extends StatelessWidget {
                 child: TextFormField(
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(18),
-                  ),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(left: 18),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide:
+                              BorderSide(width: 0, color: Color(0x0A1B1B1B))),
+                      labelText: label1,
+                      labelStyle:
+                          TextStyle(color: Color.fromRGBO(88, 95, 103, 1))),
                 ),
               ),
               if (subtitle2 == null) ...[
@@ -88,26 +96,36 @@ class ScreenWidget extends StatelessWidget {
                   child: TextFormField(
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: 18),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide:
+                              BorderSide(width: 0, color: Color(0x0A1B1B1B))),
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(18),
+                      labelText: "Confirm password",
+                      labelStyle:
+                          TextStyle(color: Color.fromRGBO(88, 95, 103, 1)),
                     ),
                   ),
                 ),
               ],
               SizedBox(height: 40),
-              Container(
-                height: 56,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                  color: Color.fromRGBO(25, 176, 21, 1.0),
-                ),
-                child: Center(
-                  child: Text(
-                    buttontext,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromRGBO(255, 255, 255, 1.0),
-                      fontWeight: FontWeight.w600,
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 56,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    color: Color.fromRGBO(25, 176, 21, 1.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      buttontext,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromRGBO(255, 255, 255, 1.0),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
